@@ -2,7 +2,7 @@
     UniSyncGui - Graphical User interface for UNISYNC
      http://hyperprog.com
 
-    (C) 2014 Peter Deak (hyper80@gmail.com)
+    (C) 2014-2019 Peter Deak (hyper80@gmail.com)
 
     License: GPLv2  http://www.gnu.org/licenses/gpl-2.0.html
 ************************************************************* */
