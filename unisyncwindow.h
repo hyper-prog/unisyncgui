@@ -13,7 +13,7 @@
 #include <QWidget>
 #include <QProcess>
 
-#define VERSION "0.911"
+#define VERSION "1.0"
 
 #ifdef _WIN32
 #define UNISYNC_PROGRAMNAME "unisync.exe"
