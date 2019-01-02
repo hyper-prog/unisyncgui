@@ -1,0 +1,1 @@
+windres unisyncgui.rc -O coff -o unisyncgui.res

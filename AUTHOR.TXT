@@ -1,0 +1,5 @@
+UniSyncGui
+Graphical user interface for UniSync
+
+Author: Peter Deak (http://hyperprog.com) hyper80@gmail.com
+License: GPLv2

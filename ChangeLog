@@ -1,0 +1,13 @@
+1.0
+    -Moved to github
+
+0.911
+    -Typo fixes
+    -Added console line numbers
+    -Sets less margin/spacing around console frame
+
+0.91
+    -Added support of unisync "-fixtime" parameter
+
+0.90
+    -First release
