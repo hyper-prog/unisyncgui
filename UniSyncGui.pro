@@ -4,18 +4,19 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-TARGET = UniSyncGui
 TEMPLATE = app
-DEFINES += DCONSOLE_NO_SQL COMPILED_WITH_QT4X
+QT       += core gui widgets
+TARGET   = UniSyncGui
+CONFIG   -= qtquickcompile console
+
+DEFINES += DCONSOLE_NO_SQL
 
 SOURCES +=\
         unisyncwindow.cpp \
-    ../gSAFE/dconsole.cpp
+        ../gSAFE/dconsole.cpp
 
 HEADERS  += unisyncwindow.h \
-    ../gSAFE/dconsole.h
+        ../gSAFE/dconsole.h
 
 FORMS    += unisyncwindow.ui
 INCLUDEPATH += . \
@@ -24,4 +25,12 @@ INCLUDEPATH += . \
 RESOURCES += \
     unisync.qrc
 
-OBJECTS += unisyncgui.res
+win32:contains(QMAKE_HOST.arch, x86_64) {
+  OBJECTS += unisyncgui64.res
+} else {
+  OBJECTS += unisyncgui32.res
+}
+
+
+
+

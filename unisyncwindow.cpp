@@ -7,7 +7,7 @@
     License: GPLv2  http://www.gnu.org/licenses/gpl-2.0.html
 ************************************************************* */
 
-#include <QtGui/QApplication>
+#include <QApplication>
 
 #include <dconsole.h>
 
@@ -122,6 +122,7 @@ int UniSyncWindow::pSupd(void)
 
 int UniSyncWindow::pFuncSelected(int i)
 {
+    Q_UNUSED(i)
     changeFunc();
     composeParameters();
     return 0;
@@ -333,7 +334,7 @@ int UniSyncWindow::run(void)
 {
     cPanel->clearText();
     unisync = new QProcess(this);
-    unisync->setReadChannelMode(QProcess::MergedChannels);
+    unisync->setProcessChannelMode(QProcess::MergedChannels);
     connect(unisync,SIGNAL(error(QProcess::ProcessError)),this,SLOT(errorOccured(QProcess::ProcessError)));
     connect(unisync,SIGNAL(started()),this,SLOT(usStarted()));
     connect(unisync,SIGNAL(finished(int,QProcess::ExitStatus)),this,SLOT(usFinished(int,QProcess::ExitStatus)));
@@ -342,8 +343,9 @@ int UniSyncWindow::run(void)
     return 0;
 }
 
-int UniSyncWindow::errorOccured( QProcess::ProcessError error)
+int UniSyncWindow::errorOccured(QProcess::ProcessError error)
 {
+    Q_UNUSED(error)
 #ifdef _WIN32
     QFile f(UNISYNC_PROGRAMNAME);
     if(!f.exists())
@@ -365,7 +367,7 @@ int UniSyncWindow::dataArrived(void)
         ba = unisync->readAll();
         data = QString::fromLocal8Bit(ba);
 
-        QStringList lst = data.split(QRegExp("[\r\n]"),QString::SkipEmptyParts);
+        QStringList lst = data.split(QRegExp("[\r\n]"),Qt::SkipEmptyParts);
         while(!lst.isEmpty())
         {
             int typ=1;
@@ -398,6 +400,7 @@ int UniSyncWindow::usStarted(void)
 
 int UniSyncWindow::usFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
+    Q_UNUSED(exitStatus)
     timer.stop();
     dataArrived();
     ui->buttonRun->setEnabled(true);
